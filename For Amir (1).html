@@ -1,0 +1,450 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>For Amir</title>
+<style>
+/* Layout: a blush envelope with a wax seal sits above the letter. Tapping it
+   lifts the flap, the letter slides out, and carnations and butterflies
+   drift up around it. The letter text fades in below. */
+:root {
+  --paper: #fff7f9;
+  --ink: #5a3d48;
+  --muted: #a88a95;
+  --rose: #d46a8a;
+  --rule: #f3d9e1;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #2a1f25;
+    --ink: #f6e6ec;
+    --muted: #c3a9b4;
+    --rose: #f29bb4;
+    --rule: #4a3440;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #2a1f25;
+  --ink: #f6e6ec;
+  --muted: #c3a9b4;
+  --rose: #f29bb4;
+  --rule: #4a3440;
+  color-scheme: dark;
+}
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(246, 176, 196, 0.45), transparent 42%),
+    radial-gradient(circle at 92% 18%, rgba(205, 180, 240, 0.40), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(250, 205, 214, 0.55), transparent 55%),
+    radial-gradient(rgba(212, 106, 138, 0.12) 1px, transparent 1.2px) 0 0 / 22px 22px,
+    var(--paper);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.7;
+  margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+  overflow-x: hidden;
+}
+.stage { max-width: 620px; margin: 0 auto; min-width: 0; }
+
+/* Scene */
+.scene {
+  position: relative;
+  height: 320px;
+  display: grid;
+  place-items: center;
+}
+.burst { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+.burst svg { position: absolute; overflow: visible; }
+.envelope-btn {
+  position: relative;
+  z-index: 2;
+  width: min(330px, 88%);
+  aspect-ratio: 330 / 230;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  filter: drop-shadow(0 16px 20px rgba(160, 60, 95, 0.25));
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.4s ease;
+}
+.envelope-btn:hover { transform: translateY(-3px); }
+.envelope-btn:focus-visible { outline: 2px solid var(--rose); outline-offset: 6px; border-radius: 8px; }
+.envelope-btn svg { width: 100%; height: 100%; display: block; overflow: visible; }
+#letterSheet { transition: transform 1.3s cubic-bezier(.2,.7,.2,1); }
+#flap { transform-box: fill-box; transform-origin: 50% 0%; transition: transform 0.9s ease; }
+.opened #flap { transform: rotateX(180deg); }
+.opened #letterSheet { transform: translateY(-110px); }
+.opened #seal { opacity: 0; transition: opacity 0.3s ease; }
+.opened .envelope-btn { cursor: default; }
+.opened .envelope-btn:hover { transform: none; }
+
+.hint { text-align: center; color: var(--muted); font-size: 0.9rem; margin: 6px 0 0; }
+.opened ~ .hint { display: none; }
+
+/* Letter text */
+.reveal { opacity: 0; transform: translateY(10px); transition: opacity 1s ease 1.4s, transform 1s ease 1.4s; }
+.opened ~ .reveal { opacity: 1; transform: none; }
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+  text-align: center;
+}
+h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2rem, 7vw, 2.75rem);
+  line-height: 1.15;
+  margin: 0 0 24px;
+  text-align: center;
+  text-wrap: balance;
+}
+h1 em { color: var(--rose); font-style: italic; font-weight: 500; }
+.body-copy { max-width: 65ch; margin: 0 auto; }
+p { font-size: 1.05rem; margin: 0 0 1.1em; }
+.rule { border: 0; border-top: 1px solid var(--rule); margin: 36px 0; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 1.5rem; margin: 0 0 16px; color: var(--rose); }
+ol.reasons { list-style: none; padding: 0; margin: 0; }
+ol.reasons li {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+ol.reasons .n { font-variant-numeric: tabular-nums; color: var(--rose); min-width: 2ch; font-weight: 600; }
+.sign { font-family: var(--display); font-size: 1.4rem; margin-top: 36px; color: var(--rose); }
+.music { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.music a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f29bb4, #d46a8a);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(212, 106, 138, 0.35);
+}
+.music a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.music span { color: var(--muted); font-size: 0.9rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  #letterSheet, #flap, .reveal, .opened #seal, .envelope-btn { transition: none; }
+}
+</style>
+
+<main class="stage">
+  <div class="scene" id="scene">
+    <div class="burst" id="burst" aria-hidden="true"></div>
+    <button class="envelope-btn" id="envelopeBtn" aria-label="Open the letter">
+      <svg viewBox="0 0 330 230" aria-hidden="true">
+        <defs>
+          <linearGradient id="envBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fbd3de"/>
+            <stop offset="1" stop-color="#f1a7bb"/>
+          </linearGradient>
+          <linearGradient id="envFront" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fce0e8"/>
+            <stop offset="1" stop-color="#f4b3c4"/>
+          </linearGradient>
+          <linearGradient id="flapG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fde4eb"/>
+            <stop offset="1" stop-color="#f0a9bc"/>
+          </linearGradient>
+          <linearGradient id="paperG" x1="0" y1="0" x2="0.9" y2="1">
+            <stop offset="0" stop-color="#fffefa"/>
+            <stop offset="0.55" stop-color="#f8f2e8"/>
+            <stop offset="1" stop-color="#eee4d7"/>
+          </linearGradient>
+          <filter id="paperTexture" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="8" result="grain"/>
+            <feColorMatrix in="grain" type="saturate" values="0" result="mono"/>
+            <feComponentTransfer in="mono" result="softGrain">
+              <feFuncA type="table" tableValues="0 0.08"/>
+            </feComponentTransfer>
+            <feBlend in="SourceGraphic" in2="softGrain" mode="multiply"/>
+          </filter>
+          <filter id="paperShadow" x="-20%" y="-20%" width="140%" height="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+            <feOffset dy="2" result="offset"/>
+            <feComponentTransfer><feFuncA type="linear" slope="0.18"/></feComponentTransfer>
+            <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <radialGradient id="sealG" cx="0.38" cy="0.32" r="0.75">
+            <stop offset="0" stop-color="#e88aa3"/>
+            <stop offset="0.6" stop-color="#c8557a"/>
+            <stop offset="1" stop-color="#9c3760"/>
+          </radialGradient>
+          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="0.6"/>
+          </filter>
+        </defs>
+
+        <!-- letter inside -->
+        <g id="letterSheet">
+          <rect x="30" y="30" width="270" height="180" rx="3" fill="url(#paperG)" stroke="#d8cbb9" stroke-width="1" filter="url(#paperShadow)"/>
+          <rect x="30" y="30" width="270" height="180" rx="3" fill="url(#paperG)" filter="url(#paperTexture)" opacity="0.55"/>
+          <path d="M39 39 H291 M39 201 H291" stroke="#d8cbb9" stroke-opacity=".35" stroke-width=".7"/>
+          <path d="M30 120 L165 112 L300 120" fill="none" stroke="#b9a996" stroke-opacity=".28" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M30 122 L165 114 L300 122" fill="none" stroke="#fffaf2" stroke-opacity=".6" stroke-width="1"/>
+          <path d="M30 30 L110 30 L30 110 Z" fill="#000" opacity=".025"/>
+          <g transform="translate(266 52)">
+            <ellipse cx="0" cy="1" rx="7" ry="5" fill="#b66f78"/>
+            <ellipse cx="-5" cy="-3" rx="4.2" ry="5.5" fill="#d69a9a" transform="rotate(-35 -5 -3)"/>
+            <ellipse cx="5" cy="-3" rx="4.2" ry="5.5" fill="#d69a9a" transform="rotate(35 5 -3)"/>
+            <ellipse cx="0" cy="-7" rx="4" ry="5.5" fill="#e6b7ad"/>
+            <circle r="2" fill="#8e555b"/>
+          </g>
+          <path d="M45 190 C51 181 60 180 69 187 C61 192 53 194 45 190Z" fill="#829477"/>
+          <path d="M52 194 C57 184 66 181 73 182 C69 191 62 196 52 194Z" fill="#a2ad91"/>
+          <path d="M150 51 C142 42 130 50 138 61 L150 73 L162 61 C170 50 158 42 150 51Z" fill="#bd7583" opacity=".8"/>
+          <line x1="58" y1="92" x2="272" y2="92" stroke="#cfc3b5" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="58" y1="114" x2="252" y2="114" stroke="#cfc3b5" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="58" y1="136" x2="262" y2="136" stroke="#cfc3b5" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="58" y1="158" x2="210" y2="158" stroke="#cfc3b5" stroke-width="1.8" stroke-linecap="round"/>
+        </g>
+
+        <!-- envelope back -->
+        <rect x="6" y="64" width="318" height="158" rx="14" fill="url(#envBody)"/>
+        <!-- front pocket -->
+        <path d="M6 222 L6 76 Q6 64 18 64 L165 158 L312 64 Q324 64 324 76 L324 222 Q324 230 312 230 L18 230 Q6 230 6 222 Z" fill="url(#envFront)"/>
+        <path d="M6 222 L165 124 L324 222" fill="none" stroke="#e98fa6" stroke-width="1.2" opacity="0.55"/>
+        <!-- soft highlight -->
+        <path d="M30 80 L150 150" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.25" filter="url(#soft)"/>
+
+        <!-- flap -->
+        <path id="flap" d="M6 76 Q6 64 18 64 L312 64 Q324 64 324 76 L165 158 Z" fill="url(#flapG)" stroke="#e98fa6" stroke-width="1"/>
+
+        <!-- wax seal with a small heart -->
+        <g id="seal" transform="translate(165 140)">
+          <circle r="25" fill="url(#sealG)"/>
+          <circle r="25" fill="none" stroke="#fff" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <path d="M0 9 C-15 -1 -9 -14 0 -6 C9 -14 15 -1 0 9 Z" fill="#fbe4ec"/>
+        </g>
+      </svg>
+    </button>
+  </div>
+  <p class="hint">Tap the envelope</p>
+
+  <div class="reveal" id="reveal">
+    <p class="eyebrow">A letter, just for you</p>
+    <h1>Hi, <em>Amir</em></h1>
+
+    <div class="body-copy">
+      <p>Gusto ko lang sabihin na I've liked you for a really long time na. I've admired you from afar, and honestly, there's just so much about you that I find fascinating. I like how we share the same interests and humor, and I genuinely appreciate how you see the good of everything (kahit peke yun). I think what I admire most about you is your values and personality. Of course, I also find you really beautiful llll, but there's so much more to you than just your looks ofc ako pa ba?</p>
+
+      <p>I could probably spend hourss talking about all the little things I like about you, but I don't want to make this message long.</p>
+
+      <p>I just want you to know that my feelings for you have been here for a while na (alam ko na alam mo). It's not something that happened overnight or infatuation lang. I've genuinely come to admire you for who you are, and I think that's what makes these feelings even more meaningful to me. And I just wanna say it to you AGAINNN.</p>
+
+      <p>So yeah, I like you, Amir. I've liked you for a very, very long time ❤✌</p>
+
+      <hr class="rule">
+
+      <h2>25 reasons I like you</h2>
+      <ol class="reasons">
+        <li><span class="n">1</span><span>Spending time with you makes me happy</span></li>
+        <li><span class="n">2</span><span>Every time I see you it makes me happy</span></li>
+        <li><span class="n">3</span><span>Every time I talk to you I smile</span></li>
+        <li><span class="n">4</span><span>You are very funny</span></li>
+        <li><span class="n">5</span><span>Same time very sweet</span></li>
+        <li><span class="n">6</span><span>Also verrryyy pretty every time</span></li>
+        <li><span class="n">7</span><span>I like you for who you are</span></li>
+        <li><span class="n">8</span><span>I like how true to self you are</span></li>
+        <li><span class="n">9</span><span>I like how you smile</span></li>
+        <li><span class="n">10</span><span>I like how you are friendly to others</span></li>
+        <li><span class="n">11</span><span>I like how you treat others</span></li>
+        <li><span class="n">12</span><span>I like you for what you do</span></li>
+        <li><span class="n">13</span><span>I like you because I just do 😂</span></li>
+        <li><span class="n">14</span><span>I like you because you look very sweet and cute</span></li>
+        <li><span class="n">15</span><span>I like you because of what I've seen you do</span></li>
+        <li><span class="n">16</span><span>I like how you are not a very materialistic girl</span></li>
+        <li><span class="n">17</span><span>I like you because you are always true to yourself and others</span></li>
+        <li><span class="n">18</span><span>I like you because you are very socially aware</span></li>
+        <li><span class="n">19</span><span>I like you because you are very aware of the emotions of others</span></li>
+        <li><span class="n">20</span><span>I like you for who you are, and you don't need to change yourself for me or for others</span></li>
+        <li><span class="n">21</span><span>Effortless beauty</span></li>
+        <li><span class="n">22</span><span>Takes care of others</span></li>
+        <li><span class="n">23</span><span>Takes good care of herself</span></li>
+        <li><span class="n">24</span><span>Family person</span></li>
+        <li><span class="n">25</span><span>Understanding</span></li>
+      </ol>
+
+      <p class="sign">— Coni the Great</p>
+
+      <div class="music">
+</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var scene = document.getElementById('scene');
+  var btn = document.getElementById('envelopeBtn');
+  var burst = document.getElementById('burst');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var uid = 0;
+
+  // Layered botanical carnation with softly shaded, irregular petals.
+  function carnation(tint) {
+    var id = 'cg' + (++uid);
+    var s = document.createElementNS(NS, 'svg');
+    s.setAttribute('width', '100'); s.setAttribute('height', '100');
+    s.setAttribute('viewBox', '-42 -42 84 84');
+    var out =
+      '<defs>' +
+      '<radialGradient id="' + id + '" cx="38%" cy="30%" r="75%">' +
+      '<stop offset="0" stop-color="#fff7f2"/>' +
+      '<stop offset=".34" stop-color="' + tint[0] + '"/>' +
+      '<stop offset="1" stop-color="' + tint[1] + '"/></radialGradient>' +
+      '<radialGradient id="' + id + 'center"><stop offset="0" stop-color="#8f4658"/><stop offset=".55" stop-color="' + tint[1] + '"/><stop offset="1" stop-color="' + tint[0] + '"/></radialGradient>' +
+      '<filter id="' + id + 'shadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.2"/></filter>' +
+      '</defs>';
+    var i, a;
+    out += '<circle r="29" fill="#6e3948" opacity=".13" filter="url(#' + id + 'shadow)"/>';
+    // Broad outer petals, each with a softly scalloped edge and fine veins.
+    for (i = 0; i < 16; i++) {
+      a = i * 22.5 + (i % 2 ? 4 : -3);
+      out += '<g transform="rotate(' + a + ')">' +
+        '<path d="M0 1 C-8 -5 -13 -16 -10 -25 C-9 -30 -4 -33 -1 -28 C2 -34 8 -31 9 -25 C13 -16 8 -5 0 1Z" fill="url(#' + id + ')" stroke="' + tint[1] + '" stroke-opacity=".38" stroke-width=".5"/>' +
+        '<path d="M-6 -22 Q-3 -30 -1 -28" fill="none" stroke="#fff7f2" stroke-opacity=".5" stroke-width="1" stroke-linecap="round"/>' +
+        '<path d="M0 -2 Q-1 -13 1 -27 M0 -12 Q-4 -17 -7 -21 M1 -15 Q5 -19 7 -23" fill="none" stroke="#fff5f1" stroke-opacity=".42" stroke-width=".55"/>' +
+        '</g>';
+    }
+    // Inner, smaller ruffled petals.
+    for (i = 0; i < 13; i++) {
+      a = i * (360 / 13) + 12;
+      out += '<g transform="rotate(' + a + ')">' +
+        '<path d="M0 2 C-6 -4 -8 -12 -5 -18 C-3 -22 0 -20 1 -17 C4 -21 8 -17 7 -12 C8 -6 4 -1 0 2Z" fill="' + tint[0] + '" stroke="' + tint[1] + '" stroke-opacity=".6" stroke-width=".55"/>' +
+        '<path d="M0 0 L1 -16" stroke="#fff8f4" stroke-opacity=".4" stroke-width=".5"/>' +
+        '</g>';
+    }
+    for (i = 0; i < 8; i++) {
+      a = i * 45;
+      out += '<path d="M0 1 C-4 -3 -4 -10 0 -13 C4 -9 5 -3 0 1Z" fill="url(#' + id + 'center)" transform="rotate(' + a + ')"/>';
+    }
+    out += '<circle r="3.2" fill="#a65366"/>';
+    s.innerHTML = out;
+    return s;
+  }
+
+  // Natural-looking butterfly with translucent layered wings and fine veins.
+  function butterfly(tint) {
+    var id = 'bg' + (++uid);
+    var s = document.createElementNS(NS, 'svg');
+    s.setAttribute('width', '92'); s.setAttribute('height', '76');
+    s.setAttribute('viewBox', '-36 -29 72 58');
+    var wing =
+      '<linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0" stop-color="#fff8ef" stop-opacity=".95"/>' +
+      '<stop offset=".28" stop-color="' + tint[0] + '" stop-opacity=".92"/>' +
+      '<stop offset="1" stop-color="' + tint[1] + '" stop-opacity=".96"/></linearGradient>' +
+      '<radialGradient id="' + id + 'eye"><stop offset="0" stop-color="#fff4d9"/><stop offset=".35" stop-color="' + tint[0] + '"/><stop offset="1" stop-color="' + tint[1] + '"/></radialGradient>';
+    s.innerHTML =
+      '<defs>' + wing + '<filter id="' + id + 'sh" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation=".9"/></filter></defs>' +
+      '<g opacity=".22" transform="translate(1.2 2.2)" filter="url(#' + id + 'sh)">' +
+        '<path d="M-2 -2 C-9 -17 -23 -29 -31 -20 C-39 -10 -28 3 -7 7 C-12 14 -17 24 -10 27 C-2 29 2 16 2 5Z" fill="#3a2a25"/>' +
+        '<path d="M2 -2 C9 -17 23 -29 31 -20 C39 -10 28 3 7 7 C12 14 17 24 10 27 C2 29 -2 16 -2 5Z" fill="#3a2a25"/>' +
+      '</g>' +
+      '<g class="lw">' +
+        '<path d="M-2 -2 C-9 -17 -23 -29 -31 -20 C-39 -10 -28 3 -7 7 C-12 14 -17 24 -10 27 C-2 29 2 16 2 5Z" fill="url(#' + id + ')" stroke="' + tint[1] + '" stroke-width=".8"/>' +
+        '<path d="M-4 -2 Q-18 -17 -31 -20 M-5 0 Q-21 -8 -34 -9 M-6 3 Q-19 5 -28 2 M-5 5 Q-14 15 -10 27 M-4 2 Q-11 -7 -17 -19" fill="none" stroke="#fff9f0" stroke-opacity=".7" stroke-width=".65"/>' +
+        '<ellipse cx="-24" cy="-15" rx="4.2" ry="5.4" fill="url(#' + id + 'eye)" stroke="#fff4e8" stroke-width=".65"/>' +
+        '<circle cx="-24" cy="-15" r="1.6" fill="#fff9ec"/>' +
+        '<path d="M-10 9 Q-17 13 -18 19" fill="none" stroke="' + tint[1] + '" stroke-opacity=".7" stroke-width=".6"/>' +
+      '</g>' +
+      '<g class="rw">' +
+        '<path d="M2 -2 C9 -17 23 -29 31 -20 C39 -10 28 3 7 7 C12 14 17 24 10 27 C2 29 -2 16 -2 5Z" fill="url(#' + id + ')" stroke="' + tint[1] + '" stroke-width=".8"/>' +
+        '<path d="M4 -2 Q18 -17 31 -20 M5 0 Q21 -8 34 -9 M6 3 Q19 5 28 2 M5 5 Q14 15 10 27 M4 2 Q11 -7 17 -19" fill="none" stroke="#fff9f0" stroke-opacity=".7" stroke-width=".65"/>' +
+        '<ellipse cx="24" cy="-15" rx="4.2" ry="5.4" fill="url(#' + id + 'eye)" stroke="#fff4e8" stroke-width=".65"/>' +
+        '<circle cx="24" cy="-15" r="1.6" fill="#fff9ec"/>' +
+        '<path d="M10 9 Q17 13 18 19" fill="none" stroke="' + tint[1] + '" stroke-opacity=".7" stroke-width=".6"/>' +
+      '</g>' +
+      '<path d="M0 -6 C-2.4 -4 -2.4 5 -1.2 9 C-0.6 10.6 0.6 10.6 1.2 9 C2.4 5 2.4 -4 0 -6Z" fill="#4a3a33"/>' +
+      '<path d="M-1 -2 H1 M-1 2 H1 M-1 6 H1" stroke="#7a6459" stroke-width=".4"/>' +
+      '<ellipse cx="0" cy="-7" rx="2.2" ry="2.6" fill="#5a4841"/>' +
+      '<path d="M-.6 -9 Q-5 -18 -10 -19 M.6 -9 Q5 -18 10 -19" stroke="#4a3a33" stroke-width=".6" fill="none" stroke-linecap="round"/>' +
+      '<circle cx="-10" cy="-19" r="1" fill="#4a3a33"/><circle cx="10" cy="-19" r="1" fill="#4a3a33"/>';
+    return s;
+  }
+
+  function sparkle() {
+    var s = document.createElementNS(NS, 'svg');
+    s.setAttribute('width', '14'); s.setAttribute('height', '14');
+    s.setAttribute('viewBox', '-7 -7 14 14');
+    s.innerHTML = '<path d="M0 -7 L1.4 -1.4 L7 0 L1.4 1.4 L0 7 L-1.4 1.4 L-7 0 L-1.4 -1.4 Z" fill="#fff6d9"/>';
+    return s;
+  }
+
+  function launch(el, x, y, rot, delay, dur) {
+    var w = parseFloat(el.getAttribute('width'));
+    var h = parseFloat(el.getAttribute('height'));
+    el.style.position = 'absolute';
+    el.style.left = 'calc(50% - ' + (w / 2) + 'px)';
+    el.style.top = 'calc(46% - ' + (h / 2) + 'px)';
+    el.style.opacity = 0;
+    burst.appendChild(el);
+    if (reduce) { el.style.opacity = 1; el.style.transform = 'translate(' + x + 'px, ' + y + 'px) rotate(' + rot + 'deg)'; return; }
+    el.animate([
+      { transform: 'translate(0px, 0px) scale(0.2) rotate(0deg)', opacity: 0 },
+      { transform: 'translate(' + (x * 0.6) + 'px, ' + (y * 0.6 - 30) + 'px) scale(1) rotate(' + (rot * 0.5) + 'deg)', opacity: 1, offset: 0.55 },
+      { transform: 'translate(' + x + 'px, ' + y + 'px) scale(1) rotate(' + rot + 'deg)', opacity: 1 }
+    ], { duration: dur, delay: delay, easing: 'ease-out', fill: 'forwards' });
+    el.style.opacity = 1;
+  }
+
+  function open() {
+    if (scene.classList.contains('opened')) return;
+    scene.classList.add('opened');
+    btn.setAttribute('aria-expanded', 'true');
+    var i, el;
+
+    var blooms = [
+      ['#e8a0a9', '#a94e68'], ['#f0c0bd', '#bd7180'], ['#d98b9c', '#93465d']
+    ];
+    var flowerAngles = [-160, -115, -70, -25, 15, 195, 245];
+    for (i = 0; i < flowerAngles.length; i++) {
+      var fa = flowerAngles[i] * Math.PI / 180;
+      var fd = 130 + (i % 3) * 20;
+      el = carnation(blooms[i % blooms.length]);
+      launch(el, Math.cos(fa) * fd, Math.sin(fa) * fd * 0.8 - 30, (i % 2 ? 30 : -30), 0.5 + i * 0.12, 1900);
+    }
+
+    var wings = [
+      ['#d7c2a2', '#927b61'], ['#d7b6ad', '#96716b'], ['#c7c6b1', '#7e8b78']
+    ];
+    var butterflyAngles = [-125, -60, -20, -165, 35, -100];
+    for (i = 0; i < butterflyAngles.length; i++) {
+      var ba = butterflyAngles[i] * Math.PI / 180;
+      var bd = 160 + (i % 2) * 30;
+      el = butterfly(wings[i % wings.length]);
+      launch(el, Math.cos(ba) * bd, Math.sin(ba) * bd * 0.9 - 40, (i % 2 ? 12 : -12), 0.9 + i * 0.18, 2700);
+    }
+
+    for (i = 0; i < 10; i++) {
+      var sa = (i / 10) * Math.PI * 2;
+      el = sparkle();
+      launch(el, Math.cos(sa) * 150, Math.sin(sa) * 110 - 20, 0, 0.8 + (i % 4) * 0.2, 1800);
+    }
+  }
+
+  btn.addEventListener('click', open);
+})();
+</script>
+
+</body></html>
